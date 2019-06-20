@@ -30,9 +30,20 @@ baseMap.add_child(allLib)
 allParks = folium.FeatureGroup(name = "Parks")
 
 allParks.add_child(folium.GeoJson(data = open("Parks.geojson.json",
-"r", encoding = "utf-8-sig").read() ))
+"r", encoding = "utf-8-sig").read(),
+style_function = lambda x: {"fillColor":"purple"} ))
 
 baseMap.add_child(allParks)
+
+# Add neighborhood
+
+neigh = folium.FeatureGroup(name = "Neighborhood")
+
+neigh.add_child(folium.GeoJson(data = open("Neighborhood_Associations.geojson.json",
+"r", encoding = "utf-8-sig").read(),
+style_function = lambda x: {"fillColor":"yellow"} ))
+
+baseMap.add_child(neigh)
 
 baseMap.add_child(folium.LayerControl())
 
