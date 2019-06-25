@@ -20,7 +20,7 @@ allLib = folium.FeatureGroup(name = "Libraries")
 
 for xVal, yVal, name in zip(xVals, yVals, libNames):
     allLib.add_child(folium.CircleMarker(location = [yVal, xVal],
-    radius = 6, popup = name, fill_color = "red", fill_opacity = 1,
+    radius = 6, popup = name, fill_color = "green", fill_opacity = 1,
     color = None))
 
 baseMap.add_child(allLib)
@@ -44,6 +44,22 @@ neigh.add_child(folium.GeoJson(data = open("Neighborhood_Associations.geojson.js
 style_function = lambda x: {"fillColor":"yellow"} ))
 
 baseMap.add_child(neigh)
+
+# Add Incident Report
+
+incidentReports = pandas.read_csv("IncidentReprt.csv")
+
+xVals = list(incidentReports["Longitude"])
+yVals = list(incidentReports["Latitude"])
+
+incidents = folium.FeatureGroup(name = "Incident Reports in 2018")
+
+for xVal, yVal in zip(xVals, yVals):
+    incidents.add_child(folium.CircleMarker(location = [yVal, xVal],
+    radius = 6, fill_color = "red", fill_opacity = 1,
+    color = None))
+
+baseMap.add_child(incidents)
 
 baseMap.add_child(folium.LayerControl())
 
