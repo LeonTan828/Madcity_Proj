@@ -53,11 +53,25 @@ for xVal, yVal in zip(xVals, yVals):
     radius = 6, fill_color = "red", fill_opacity = 1,
     color = None))
 
+# Adding highschools
+highschool = pandas.read_csv("Madison Highschool.csv")
+
+xVals = list(highschool["Longitude"])
+yVals = list(highschool["Latitude"])
+
+madHigh = folium.FeatureGroup(name = "High Schools")
+
+for xVal, yVal in zip(xVals, yVals):
+    madHigh.add_child(folium.CircleMarker(location = [yVal, xVal],
+    radius = 6, popup = None, fill_color = "blue", fill_opacity = 1,
+    color = None))
+
 # Adding all map features
 baseMap.add_child(allLib)
 baseMap.add_child(allParks)
 baseMap.add_child(neigh)
 baseMap.add_child(incidents)
+baseMap.add_child(madHigh)
 
 baseMap.add_child(folium.LayerControl())
 
