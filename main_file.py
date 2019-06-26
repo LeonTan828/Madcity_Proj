@@ -58,12 +58,13 @@ highschool = pandas.read_csv("Madison Highschool.csv")
 
 xVals = list(highschool["Longitude"])
 yVals = list(highschool["Latitude"])
+CollRI = list(highschool["College Readiness Index"])
 
 madHigh = folium.FeatureGroup(name = "High Schools")
 
-for xVal, yVal in zip(xVals, yVals):
+for xVal, yVal, readIn in zip(xVals, yVals, CollRI):
     madHigh.add_child(folium.CircleMarker(location = [yVal, xVal],
-    radius = 6, popup = None, fill_color = "blue", fill_opacity = 1,
+    radius = 6, popup = readIn, fill_color = "blue", fill_opacity = 1,
     color = None))
 
 # Adding all map features
