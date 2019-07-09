@@ -5,8 +5,8 @@ import folium
 import pandas
 
 # Set Madison as base map
-baseMap = folium.Map(location=[43.071906, -89.396824], \
-    zoom_start = 12, tiles = "OpenStreetMap")
+baseMap = folium.Map(location=[43.071906, -89.396824],
+zoom_start = 12, tiles = "OpenStreetMap")
 
 
 # Add libraries as points
