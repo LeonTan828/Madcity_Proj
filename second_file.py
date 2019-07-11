@@ -33,7 +33,7 @@ weapVio2017 = folium.FeatureGroup(name = "Weapon Violation in 2017")
 
 for xVal, yVal in zip(xVals, yVals):
     weapVio2017.add_child(folium.CircleMarker(location = [yVal, xVal],
-    radius = 6, fill_color = "red", fill_opacity = 1,
+    radius = 6, fill_color = "blue", fill_opacity = 1,
     color = None))
 
 
